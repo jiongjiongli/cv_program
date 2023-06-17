@@ -44,7 +44,6 @@ def prepare_train(dir_path_dict, train_kwargs):
 
     # Write to setting.yaml
     settings_yaml_file_path = yolo_config_dir / 'settings.yaml'
-
     settings_yaml_file_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(settings_yaml_file_path.as_posix(), 'w', encoding='utf-8') as file_stream:
@@ -187,7 +186,11 @@ def main():
 
     train_kwargs = dict(
                       pretrained_model_name='yolov8n.pt',
-                      epochs=200)
+                      epochs=100,
+                      batch=64,
+                      imgsz=320,
+                      optimizer='AdamW',
+                      half=True)
 
     dir_path_dict = dir_path_dict_collection[environment_name]
 

@@ -34,12 +34,12 @@ class Converter:
         result['image_file_path'] = image_file_path
 
         size_dict = parse_result['size']
-        img_size = (size_dict['height'], size_dict['width'])
+        img_shape = (size_dict['height'], size_dict['width'], size_dict['depth'])
 
         box_list = parse_result['box_list']
         target_file_path = voc_file_path.with_suffix(TXT_EXT)
 
-        self.writer.save(box_list, class_names, img_size, target_file_path)
+        self.writer.save(box_list, class_names, img_shape, target_file_path)
 
         return result
 
@@ -76,9 +76,9 @@ def generate_yolo_dataset(project_name, data_dir_path):
     success_files = 0
     completed_files = 0
 
-    progress_bar = tqdm(voc_file_paths)
+    # progress_bar = tqdm(voc_file_paths)
 
-    for voc_file_path in progress_bar:
+    for voc_file_path in voc_file_paths:
         try:
             save_result = converter.save_as_yolo_format(voc_file_path, class_names)
 
@@ -92,9 +92,9 @@ def generate_yolo_dataset(project_name, data_dir_path):
 
         completed_files += 1
 
-        message_format = 'success_files: {} completed_files: {} / {}'
-        message = message_format.format(success_files, completed_files, len(voc_file_paths))
-        progress_bar.set_description(message)
+        # message_format = 'success_files: {} completed_files: {} / {}'
+        # message = message_format.format(success_files, completed_files, len(voc_file_paths))
+        # progress_bar.set_description(message)
 
     print('class_names', class_names)
 
@@ -138,10 +138,6 @@ def generate_yolo_dataset(project_name, data_dir_path):
 def main():
     project_name = r'illegal_construction'
     environment_name = 'local'
-
-    train_kwargs = dict(
-                      pretrained_model_name='yolov8n.pt',
-                      epochs=3)
 
     dir_path_dict = dir_path_dict_collection[environment_name]
 
