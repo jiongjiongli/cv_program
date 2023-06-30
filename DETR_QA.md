@@ -27,16 +27,18 @@ Dab DETR认为decoder的object query是一种soft ROI pooling。
 
 在decoder部分添加了多组的query，每一组query是所有gt 目标的encoding + 噪声。模型的任务是给这些添加了噪声的query去噪，还原出gt。为了不因为添加这些带噪声的gt而导致信息泄露，添加了cross attention的mask，使得其他的query不会看到这些带噪声的gt信息，并且不同group之间也不会看到对方的信息。
 
-# 6 思考Dab DETR与两阶段检测器之间关系
+# 6 思考Dab DETR与两阶段检测器之间的关系
 
 问题是不是问Dab DETR和ROI pooling的关系？还是问Deformable DETR和两阶段检测器的关系？
 
-- Dab DETR和ROI pooling的关系：
-  Dab DETR把decoder部分的object query设置为锚框。decoder预测bbox与锚框坐标的偏移量。并以级联的方式在每一层更新锚框。
-  这样decoder的object query就是一种soft ROI pooling。
+## Dab DETR和ROI pooling的关系
 
-- Deformable DETR和两阶段检测器的关系：
-  Deformable DETR论文中有一种两阶段变体，先根据encoder feature map，使用detection head预测目标分类和bbox偏移量，加上预定义的锚框坐标获得预测的bbox坐标，然后选择top k scoring bbox作为region proposal，作为decoder的初始bbox，即object proposal的positional embedding。
+Dab DETR把decoder部分的object query设置为锚框。decoder预测bbox与锚框坐标的偏移量。并以级联的方式在每一层更新锚框。
+这样decoder的object query就是一种soft ROI pooling。
+
+## Deformable DETR和两阶段检测器的关系
+
+Deformable DETR论文中有一种两阶段变体，先根据encoder feature map，使用detection head预测目标分类和bbox偏移量，加上预定义的锚框坐标获得预测的bbox坐标，然后选择top k scoring bbox作为region proposal，作为decoder的初始bbox，即object query的positional embedding。
 
 # 7 Transformer Attention计算量如何计算
 
