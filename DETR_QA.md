@@ -42,7 +42,7 @@ Dab DETR认为decoder的object query是一种soft ROI pooling。
 
 主要是开始和结束的proj，和中间Q，K，V矩阵乘积的计算复杂度(假设矩阵A [$m$, $n$], 矩阵B[$n$,$p$]，则AB算法复杂度为$mnp$)。DETR论文中也有描述。
 
-![DETR-computation-complexity](D:\proj\git\cv_program\images\DETR-computation-complexity.png)
+![DETR-computation-complexity](./images/DETR-computation-complexity.png)
 
 # 8 思考DETR,Dab DETR,DN DETR,DINO，RT DETR是如何一步步发展的
 
