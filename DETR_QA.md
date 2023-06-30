@@ -44,7 +44,7 @@ Dab DETR认为decoder的object query是一种soft ROI pooling。
 
 ![DETR-computation-complexity](./images/DETR-computation-complexity.png)
 
-# 8 思考DETR,Dab DETR,DN DETR,DINO，RT DETR是如何一步步发展的
+# 8 思考DETR, Dab DETR, DN DETR, DINO, RT DETR是如何一步步发展的
 
 ## DETR
 
