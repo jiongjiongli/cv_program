@@ -1,4 +1,4 @@
-#  1 如何理解DETR的query,其本质是什么，
+#  1 如何理解DETR的query,其本质是什么W
 
 1. encoder的query： 某像素的image feature encoding，用于encoder的输入。通过encoder的注意力机制使得每个像素的feature都能注意到其他的feature。论文实验显示encoder可以区分图像中不同的目标。
 
@@ -7,7 +7,7 @@
 
 很难说本质是什么，比如对于object query，有的说是slot，有的说是锚点，有的说是锚框。
 
-## 2 DETR本身存在什么缺陷
+# 2 DETR本身存在什么缺陷
 
 缺陷：主要是1) 收敛慢，DETR论文中训练了500轮。2) 计算复杂度高，与图像宽高平方成正比。
 
