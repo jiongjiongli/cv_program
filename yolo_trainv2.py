@@ -62,7 +62,7 @@ def main():
     # 6. Train args
     train_kwargs = dict(project=train_results_dir,
                         epochs=100,
-                        batch=32,
+                        batch=16,
                         imgsz=640,
                         # optimizer='AdamW',
                         resume=is_resume)
