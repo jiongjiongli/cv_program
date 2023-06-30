@@ -62,7 +62,9 @@ CNN + transformer + detection head，使用Hungarian Match匹配pred和gt。
 
 ## DINO
 
-1. 在DN DETR基础上进一步提升训练效果。1) 给每一组带噪声的query添加了一组负样例的query，从而减少重复预测的概率，并提升对负样例的预测效果。分类loss为focal loss。
+在DN DETR基础上进一步提升训练效果。
+
+1. Constractive denoising training: 给每一组带噪声的query添加了一组负样例的query，从而减少重复预测的概率，并提升对负样例的预测效果。分类loss为focal loss。
 
 2) Mixed query selection 锚框初始化。 使用encoder预测结果的top k输出初始化decoder的锚框，但decoder的content query仍然是训练得到。
 3) Look forward twice策略，使得每个检测头的bbox包含前2层decoder的偏移值而不是只有最近的1层decoder，从而更新更多层的参数。
