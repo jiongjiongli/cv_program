@@ -1,4 +1,4 @@
-#  1 如何理解DETR的query,其本质是什么W
+#  1 如何理解DETR的query,其本质是什么
 
 1. encoder的query： 某像素的image feature encoding，用于encoder的输入。通过encoder的注意力机制使得每个像素的feature都能注意到其他的feature。论文实验显示encoder可以区分图像中不同的目标。
 
@@ -82,8 +82,4 @@ CNN + transformer + detection head，使用Hungarian Match匹配pred和gt。
 4) Training: 使用DINO的constractive denoising training和look forward twice策略。
 
 5) Loss: 使用Varifocal Loss，把pred与GT的IOU作为分类loss，这样在筛选topk的时候就会综合考虑分类与bbox IOU信息，从而实现IOU aware Query Selection。
-
-
-
-
 
