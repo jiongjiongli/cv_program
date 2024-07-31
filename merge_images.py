@@ -13,10 +13,10 @@ font = ImageFont.truetype('simsun.ttc', 32)
 images = []
 
 for image_path in image_paths:
-    image_path = Path(image_path)
-    # print(image_path.as_posix())
+    curr_image_path = Path(r'D:\Data\chicago') / image_path
+    # print(curr_image_path.as_posix())
 
-    image = Image.open(image_path.as_posix())
+    image = Image.open(curr_image_path.as_posix())
     resized_height = 320
     image = image.resize((int(resized_height * 1.618), resized_height))
     images.append(image)
